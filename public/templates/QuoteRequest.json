@@ -1,0 +1,61 @@
+{
+  "externalId": "TD20210816123456789",
+  "countryCode": "gb",
+  "languageCode": "en",
+  "clientId": "7201af8c-aabe-4d73-b0d0-dde232e53d8d",
+  "consumer": {
+    "category": "PERSON",
+    "contactPreferences": [
+      {
+        "type": "DIRECT_MAIL",
+        "value": "POSITIVE"
+      }
+    ],
+    "firstName": "John",
+    "surname": "Doe",
+    "emailAddresses": [
+      {
+        "type": "HOME",
+        "value": "test@test.co.uk",
+        "validationStatus": "NONE"
+      }
+    ],
+    "address": {
+      "addressLine1": "47 Richmond Street",
+      "city": "London",
+      "country": "GB",
+      "postalCodeNumber": "1213TP",
+      "addressType": "HOME",
+      "validationStatus": "Validated"
+    },
+    "phoneNumbers": [
+      {
+        "type": "HOME",
+        "value": "+447000000000",
+        "validationStatus": "NONE"
+      }
+    ]
+  },
+  "opportunity": {
+    "type": "Offer Request",
+    "channel": "PARTNER",
+    "component": "UNSPECIFIED",
+    "campaignCode": "VCB2CSalesVCUK",
+    "description": "",
+    "retailer": {
+      "parmaPartnerCode": "AD8SI"
+    },
+    "productOfInterests": [
+      {
+        "type": "Car",
+        "vehicle": {
+          "make": "Volvo",
+          "model": "XC40",
+          "productName": "Volvo XC40 Recharge 170kW Recharge Core 69kWh 5dr Auto",
+          "newUsed": "New"
+        }
+      }
+    ]
+  },
+  "brand": "Volvo"
+}

@@ -1,0 +1,47 @@
+{
+  "externalId": "TD20210816123456789",
+  "clientId": "7201af8c-aabe-4d73-b0d0-dde232e53d8d",
+  "market": "UK",
+  "countryCode": "UK",
+  "language": "EN",
+  "languageCode": "EN",
+  "consumer": {
+    "category": "PERSON",
+    "firstName": "FirstName",
+    "surname": "LastName",
+    "title": "TITLE_MR",
+    "emailAddress": [
+      {
+        "usage": "HOME",
+        "value": "test_04172024022351@decerno.se",
+        "validationStatus": "Validated"
+      }
+    ],
+    "address": {
+      "addressLine1": "47 Richmond Street",
+      "city": "London",
+      "country": "GB",
+      "postalCodeNumber": "1213TP",
+      "addressType": "HOME",
+      "validationStatus": "Validated"
+    },
+    "contactPreference": [
+      {
+        "type": "CONT_PREF_EMAIL",
+        "value": "Positive",
+        "captureDate": null
+      }
+    ]
+  },
+  "opportunity": {
+    "campaignCode": "IBTestDriveExtendedVCUK",
+    "channel": "PARTNER",
+    "component": "UNSPECIFIED",
+    "type": "Contact request",
+    "retailer": {
+      "parmaPartnerCode": "ADSI8"
+    }
+  },
+  "isB2B": "false",
+  "brand": "Volvo"
+}
