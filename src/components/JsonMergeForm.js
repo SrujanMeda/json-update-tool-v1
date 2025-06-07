@@ -1,45 +1,52 @@
-// src/components/JsonMergeForm.js
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { mergeJson } from "../utils/jsonMerger";
+import formTypeMapper from "../utils/formTypeMapper";
 
-const formTypes = [
-  "Callback",
-  "QuoteRequest",
-  "KeepMeUpdated",
-  "ContactRequest",
-  "TestDriveRequest",
-];
+function detectFormType(inputJson) {
+  if (!Array.isArray(inputJson.field_data)) return null;
+  const typeField = inputJson.field_data.find(
+    (f) => f.name === "opportunity_type"
+  );
+  return typeField?.values?.[0]?.toLowerCase() ?? null;
+}
 
 function JsonMergeForm() {
-  const [formType, setFormType] = useState("Callback");
   const [inputJson, setInputJson] = useState("");
   const [resultJson, setResultJson] = useState("");
+  const [detectedFormType, setDetectedFormType] = useState("");
 
   const handleMerge = async () => {
     try {
+      const parsedInput = JSON.parse(inputJson);
+      const detectedType = detectFormType(parsedInput);
+      const formType = formTypeMapper[detectedType];
+
+      if (!formType) {
+        setResultJson(`❌ Unknown opportunity_type: ${detectedType}`);
+        return;
+      }
+
       const res = await fetch(`/templates/${formType}.json`);
       const baseJson = await res.json();
-      const parsedInput = JSON.parse(inputJson);
+
       const merged = mergeJson(baseJson, parsedInput);
       setResultJson(JSON.stringify(merged, null, 2));
+      setDetectedFormType(formType);
     } catch (err) {
-      setResultJson(`Error: ${err.message}`);
+      setResultJson(`❌ Error: ${err.message}`);
     }
   };
 
   return (
     <div>
-      <h2>JSON Merge Tool</h2>
-      <label>
-        Select Form Type:
-        <select value={formType} onChange={(e) => setFormType(e.target.value)}>
-          {formTypes.map((type) => (
-            <option key={type}>{type}</option>
-          ))}
-        </select>
-      </label>
+      <h2>JSON Update Tool</h2>
 
-      <br />
+      {detectedFormType && (
+        <div>
+          <strong>Detected Form Type:</strong> {detectedFormType}
+        </div>
+      )}
+
       <label>
         Paste Input JSON:
         <textarea
